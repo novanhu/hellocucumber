@@ -1,9 +1,12 @@
 package hellocucumber.stepDefinitions;
 
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import pojo.Account;
 import pojo.Company;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 
 public class CreateAccount {
 	
@@ -28,5 +31,11 @@ public class CreateAccount {
 	@Then("^verify the account name \"([^\"]*)\" phone \"([^\"]*)\" email \"([^\"]*)\"$")
 	public void verify_the_account_name_phone_email(String name, String phone, String email) throws Exception {
 		System.out.println("Final Account Info: " + account);
+	}
+	
+	@Then("^verify the account should be null$")
+	public void verify_the_account_should_be_null() throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    assertThat(this.account.getEmail(), nullValue());           
 	}
 }
